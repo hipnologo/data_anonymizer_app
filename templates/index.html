@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Anonymizer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="my-4">Data Anonymizer</h1>
+      
+      {% set colors = {'low': 'success', 'medium': 'warning', 'high': 'danger'} %}
+
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-info" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+      
+      <form action="/" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="file" class="form-label">Upload CSV or Excel file</label>
+          <input class="form-control" type="file" id="file" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      {% if columns %}
+        <h2 class="my-4">Columns</h2>
+        <form action="javascript:void(0);" method="POST" id="anonymizeForm">
+            <input type="hidden" name="filename" value="{{ filepath }}">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Column</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for column in columns %}
+                <tr>
+                  <td>{{ column }}</td>
+                  <td>
+                    <select class="form-select" name="{{ column }}">
+                      <option value="none" selected>None</option>
+                      <option value="pseudonymize">Pseudonymize</option>
+                      <option value="redact">Redact</option>
+                      <option value="remove">Remove</option>
+                    </select>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary">Anonymize</button>
+        </form>
+      {% endif %}
+
+      {% if risk_score %}
+        <h2 class="my-4">
+            Re-identification Risk Score:
+            <span class="badge risk-score bg-{{ colors[risk_score] }}">{{ risk_score }}</span>
+            <a href="#" class="download-link btn btn-primary d-none">Download Anonymized File</a>
+          </h2>
+      {% endif %}
+      
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          $("#anonymizeForm").submit(function(event) {
+            event.preventDefault();
+            let formData = new FormData(event.target);
+            
+            axios.post("/anonymize", formData)
+              .then(function(response) {
+                // Update the DOM with the results
+                $(".risk-score").text(response.data.risk_score);
+                $(".download-link").attr("href", "/download/" + response.data.filepath);
+                
+                // Show the download button
+                $(".download-link").removeClass("d-none");
+              })
+              .catch(function(error) {
+                console.error(error);
+              });
+          });
+        });
+      </script>
+  </body>
+</html>
