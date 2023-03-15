@@ -4,6 +4,7 @@
 [![Forks](https://img.shields.io/github/forks/hipnologo/data_anonymizer_app)](https://github.com/hipnologo/data_anonymizer_app/network/members)
 [![Stars](https://img.shields.io/github/stars/hipnologo/data_anonymizer_app)](https://github.com/hipnologo/data_anonymizer_app/stargazers)
 [![Issues](https://img.shields.io/github/issues/hipnologo/data_anonymizer_app)](https://github.com/hipnologo/data_anonymizer_app/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/hipnologo/data_anonymizer_app)](https://github.com/hipnologo/data_anonymizer_app/graphs/contributors)
 
 Data Anonymizer App is a simple Flask-based web application that helps users anonymize sensitive data in CSV and Excel files. The app provides functionalities such as pseudonymization, redaction, and column removal to protect personal information.
 
