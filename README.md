@@ -1,6 +1,6 @@
 # Data Anonymizer App
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache License 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Forks](https://img.shields.io/github/forks/hipnologo/data_anonymizer_app)](https://github.com/hipnologo/data_anonymizer_app/network/members)
 [![Stars](https://img.shields.io/github/stars/hipnologo/data_anonymizer_app)](https://github.com/hipnologo/data_anonymizer_app/stargazers)
 [![Issues](https://img.shields.io/github/issues/hipnologo/data_anonymizer_app)](https://github.com/hipnologo/data_anonymizer_app/issues)
