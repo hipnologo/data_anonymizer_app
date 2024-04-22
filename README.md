@@ -32,39 +32,51 @@ Data Anonymizer App is a simple Flask-based web application that helps users ano
 
 1. Clone the repository:
 
-``git clone https://github.com/hipnologo/data_anonymizer_app.git``
+```bash
+git clone https://github.com/hipnologo/data_anonymizer_app.git
+```
 
 
 2. Change to the project directory:
 
-``cd data_anonymizer_app``
-
+```bash
+cd data_anonymizer_app
+```
 
 3. Install the required dependencies using pip:
 
-``pip install -r requirements.txt``
-
+```bash
+pip install -r requirements.txt
+```
 
 4. Generate a secret key and create a `.env` file in the project directory by running the `genkey.py` script:
 
-``python genkey.py``
-
+```bash
+python genkey.py
+```
 
 This will create a `.env` file containing the `SECRET_KEY` variable with a randomly generated 32-byte hexadecimal value. Alternatively you can use: 
-`echo "SECRET_KEY=your_secret_key_here" > .env`
+```bash
+echo "SECRET_KEY=your_secret_key_here" > .env
+```
 
 5. Generate fake random data into a `.csv` file which will be placed under `data` folder for testing purposes.
-``python gendata.py``
+```bash
+python gendata.py
+```
 
 Bonus: create a .gitignore for the project.
-``curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore``
+```bash
+curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore
+```
 
 ## Usage
 
 1. Start the Flask development server:
 
-``python app.py``
-
+```bash
+python app.py
+```
 
 2. Open a web browser and navigate to `http://127.0.0.1:5000`.
 
