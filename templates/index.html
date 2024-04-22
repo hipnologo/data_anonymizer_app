@@ -77,17 +77,19 @@
             let formData = new FormData(event.target);
             
             axios.post("/anonymize", formData)
-              .then(function(response) {
-                // Update the DOM with the results
-                $(".risk-score").text(response.data.risk_score);
-                $(".download-link").attr("href", "/download/" + response.data.filepath);
-                
-                // Show the download button
-                $(".download-link").removeClass("d-none");
-              })
-              .catch(function(error) {
-                console.error(error);
-              });
+            .then(function(response) {
+              // Update the DOM with the results
+              $(".risk-score").text(response.data.risk_score);
+              $(".download-link").attr("href", "/download/" + response.data.filepath); 
+              
+              // Show the download button
+              $(".download-link").removeClass("d-none");
+            })
+            .catch(function(error) {
+              console.error("Error during anonymization:", error);
+              alert("Failed to anonymize file.");
+            });
+          
           });
         });
       </script>

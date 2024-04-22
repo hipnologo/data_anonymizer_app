@@ -10,11 +10,13 @@ Data Anonymizer App is a simple Flask-based web application that helps users ano
 
 ## Table of Contents
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Data Anonymizer App](#data-anonymizer-app)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Features
 
@@ -50,6 +52,12 @@ Data Anonymizer App is a simple Flask-based web application that helps users ano
 
 This will create a `.env` file containing the `SECRET_KEY` variable with a randomly generated 32-byte hexadecimal value. Alternatively you can use: 
 `echo "SECRET_KEY=your_secret_key_here" > .env`
+
+5. Generate fake random data into a `.csv` file which will be placed under `data` folder for testing purposes.
+``python gendata.py``
+
+Bonus: create a .gitignore for the project.
+``curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore``
 
 ## Usage
 
